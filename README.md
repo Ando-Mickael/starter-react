@@ -19,9 +19,9 @@ To get started, simply clone this repository and install dependencies:
 
 bashCopy code
 
-`git clone https://github.com/AndoMickael/starter-react
-cd starter-react
-npm install` 
+`git clone https://github.com/AndoMickael/starter-react`
+`cd starter-react`
+`npm install` 
 
 ## Available Scripts
 
