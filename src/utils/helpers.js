@@ -13,4 +13,6 @@ function slugify(string) {
         .replace(/-+$/, ''); // Trim - from end of text
 }
 
-export { slugify }
+export {
+    slugify
+}
