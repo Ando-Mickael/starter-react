@@ -1,31 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useQuery } from "react-query";
 
 export default function IndexPage() {
-    const routes = [
-        {
-            title: "Table",
-            url: "/example/table"
-        },
-        {
-            title: "Pie chart",
-            url: "/example/pie"
-        },
-        {
-            title: "Test form",
-            url: "/example/form"
-        },
-    ];
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["posts"],
+    queryFn: () =>
+      fetch("https://jsonplaceholder.typicode.com/posts").then((response) =>
+        response.json()
+      ),
+  });
 
-    return (
-        <ul>
-            {routes.map((route, index) => {
-                return (
-                    <li key={index}>
-                        <Link to={route.url}>{route.title}</Link>
-                    </li>
-                );
-            })}
-        </ul>
-    );
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
+  return (
+    <ul>
+      {data.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
 }
